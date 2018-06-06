@@ -5,6 +5,26 @@ import store from './store'
 
 Vue.config.productionTip = false
 
+//> Import custom services.
+import FlashMessageService from './plugins/FlashMessage'
+import CookieService from './plugins/Cookie'
+import StorageService from './plugins/Storage'
+import AuthService from './plugins/Auth'
+import ServerEngine from './plugins/ServerEngine'
+import ServerRoutes from './plugins/ServerRoutes'
+import ServerRequests from './plugins/ServerRequests'
+//<
+
+//> Use custom service.
+Vue.use(FlashMessageService);
+Vue.use(CookieService);
+Vue.use(AuthService);
+Vue.use(StorageService, store);
+Vue.use(ServerEngine);
+Vue.use(ServerRoutes);
+Vue.use(ServerRequests);
+//<
+
 new Vue({
   router,
   store,
