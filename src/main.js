@@ -14,6 +14,7 @@ import AuthService from './plugins/Auth'
 import ServerEngine from './plugins/ServerEngine'
 import ServerRoutes from './plugins/ServerRoutes'
 import ServerRequests from './plugins/ServerRequests'
+import GameService from './plugins/Game'
 //<
 
 Vue.use(vueResource);
@@ -26,6 +27,7 @@ Vue.use(StorageService, store);
 Vue.use(ServerEngine);
 Vue.use(ServerRoutes);
 Vue.use(ServerRequests);
+Vue.use(GameService);
 //<
 
 Vue.http.options.root = 'https://localhost:44390';
