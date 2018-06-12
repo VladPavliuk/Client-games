@@ -3,7 +3,6 @@ export default {
         Vue.auth = Vue.prototype.$auth = {
 
             setToken(token) {
-                Vue.shoppingCart.clear();
                 localStorage.setItem('token', 'Bearer ' + token)
             },
 
@@ -12,7 +11,6 @@ export default {
             },
 
             destroyToken() {
-                Vue.shoppingCart.clear();
                 localStorage.removeItem('token');
             },
 

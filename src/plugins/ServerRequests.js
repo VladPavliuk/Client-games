@@ -1,11 +1,13 @@
 export default {
     install(Vue, options) {
         Vue.server = Vue.prototype.$server = {
-            test: {
-                test() {
+            user: {
+                login(data) {
                     return Vue.serverEngine.request({
-                        uri: Vue.serverRoutes.test.test()
-                    });
+                        method: 'post',
+                        body: data,
+                        uri: Vue.serverRoutes.user.login()
+                    }).then(res => Vue.auth.setToken(res.body.auth_token))
                 }
             }
         }

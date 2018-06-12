@@ -22,9 +22,9 @@
                     ckeditor.setAttribute('src', "http://www.ping-pong.vladdev.com");
                     document.getElementById('wrapper').appendChild(ckeditor);
                 });
-            this.$server.test.test()
-                .then(res => console.log(res))
-                .catch(res => console.log(res))
+            // this.$server.test.test()
+            //     .then(res => console.log(res))
+            //     .catch(res => console.log(res))
         }
     }
 </script>

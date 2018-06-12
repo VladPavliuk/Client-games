@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import vueResource from 'vue-resource'
+import VeeValidate from 'vee-validate';
 
 Vue.config.productionTip = false
 
@@ -18,6 +19,7 @@ import GameService from './plugins/Game'
 //<
 
 Vue.use(vueResource);
+Vue.use(VeeValidate);
 
 //> Use custom service.
 Vue.use(FlashMessageService);
@@ -29,6 +31,7 @@ Vue.use(ServerRoutes);
 Vue.use(ServerRequests);
 Vue.use(GameService);
 //<
+
 
 Vue.http.options.root = 'https://localhost:44390';
 
