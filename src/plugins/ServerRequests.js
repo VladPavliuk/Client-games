@@ -8,7 +8,14 @@ export default {
                         body: data,
                         uri: Vue.serverRoutes.user.login()
                     }).then(res => Vue.auth.setToken(res.body.auth_token))
-                }
+                },
+                logout() {
+                    return Vue.serverEngine.request({
+                        method: 'post',
+                        auth: true,
+                        uri: Vue.serverRoutes.user.logout()
+                    });
+                },
             }
         }
     }

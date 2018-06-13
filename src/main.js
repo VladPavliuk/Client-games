@@ -3,7 +3,8 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import vueResource from 'vue-resource'
-import VeeValidate from 'vee-validate';
+import VeeValidate from 'vee-validate'
+import VueJwtDecode from 'vue-jwt-decode'
 
 Vue.config.productionTip = false
 
@@ -20,6 +21,7 @@ import GameService from './plugins/Game'
 
 Vue.use(vueResource);
 Vue.use(VeeValidate);
+Vue.use(VueJwtDecode)
 
 //> Use custom service.
 Vue.use(FlashMessageService);

@@ -4,6 +4,9 @@ export default {
             user: {
                 login() {
                     return 'api/auth/login';
+                },
+                logout() {
+                    return 'api/auth/logout';
                 }
             }
         }
