@@ -14,7 +14,7 @@ export default {
                         method: 'post',
                         auth: true,
                         uri: Vue.serverRoutes.user.logout()
-                    });
+                    }).then(_ => Vue.auth.destroyToken())
                 },
             }
         }

@@ -12,7 +12,7 @@
         methods: {
             logout() {
                 this.$server.user.logout()
-                    .then(res => console.log(res));
+                    .then(_ => this.$router.push({ name: 'user-login' }));
             }
         }
     }

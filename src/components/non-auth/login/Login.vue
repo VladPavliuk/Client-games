@@ -39,7 +39,7 @@
                 this.$server.user.login({
                     email: this.email,
                     password: this.password
-                });
+                }).then(_ => this.$router.push({ name: 'user-profile' }));
             }
         }
     }
