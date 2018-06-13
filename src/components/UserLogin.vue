@@ -1,16 +1,28 @@
 <template>
     <div>
-        <input v-validate="'required|email'"
-               v-model="email"
-               name="email"
-               type="text">
-        <span>{{ errors.first('email') }}</span>
-        <input v-validate="'required'"
-               v-model="password"
-               name="password"
-               type="password">
-        <span>{{ errors.first('password') }}</span>
-        <button @click="submit">Submit</button>
+        <div class="grid-container">
+            <div class="grid-x grid-padding-x">
+                <div class="medium-6 cell">
+                    <label>Email
+                        <input v-validate="'required|email'"
+                               v-model="email"
+                               name="email"
+                               type="text">
+                    </label>
+                </div>
+                <div class="medium-6 cell">
+                    <label>Password
+                        <input v-validate="'required'"
+                               v-model="password"
+                               name="password"
+                               type="password">
+                    </label>
+                </div>
+            </div>
+            <button @click="submit"
+                    type="button"
+                    class="success button">Submit</button>
+        </div>
     </div>
 </template>
 

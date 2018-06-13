@@ -35,7 +35,7 @@ Vue.use(GameService);
 
 Vue.http.options.root = 'https://localhost:44390';
 
-new Vue({
+export default new Vue({
   router,
   store,
   render: h => h(App)

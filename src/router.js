@@ -1,27 +1,51 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
-import About from './views/About.vue'
-import UserLogin from './components/UserLogin'
+import AuthService from "./plugins/Auth";
 
-Vue.use(Router)
+import UserProfile from './components/UserProfile';
+import UserLogin from './components/UserLogin';
 
-export default new Router({
+
+Vue.use(AuthService);
+Vue.use(Router);
+
+const router = new Router({
     routes: [
         {
             path: '/login',
             name: 'user-login',
-            component: UserLogin
+            component: UserLogin,
+            meta: {requiresGuest: true}
         },
         {
-            path: '/',
+            path: '/home',
             name: 'home',
-            component: Home
-        },
-        {
-            path: '/about',
-            name: 'about',
-            component: About
+            component: UserProfile,
+            meta: {requiresAuth: true}
         }
     ]
-})
+});
+
+router.beforeEach((to, from, next) => {
+    if (to.matched.some(record => record.meta.requiresAuth)) {
+        if (!Vue.auth.isAuthenticated()) {
+            next({
+                path: '/login'
+            })
+        } else {
+            next()
+        }
+    } else if (to.matched.some(record => record.meta.requiresGuest)) {
+        if (Vue.auth.isAuthenticated()) {
+            next({
+                path: '/home'
+            })
+        } else {
+            next()
+        }
+    } else {
+        next()
+    }
+});
+
+export default router;
