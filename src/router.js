@@ -18,8 +18,8 @@ const router = new Router({
             meta: {requiresGuest: true}
         },
         {
-            path: '/home',
-            name: 'home',
+            path: '/profile',
+            name: 'user-profile',
             component: UserProfile,
             meta: {requiresAuth: true}
         }
@@ -30,7 +30,7 @@ router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {
         if (!Vue.auth.isAuthenticated()) {
             next({
-                path: '/login'
+                name: 'user-login'
             })
         } else {
             next()
@@ -38,7 +38,7 @@ router.beforeEach((to, from, next) => {
     } else if (to.matched.some(record => record.meta.requiresGuest)) {
         if (Vue.auth.isAuthenticated()) {
             next({
-                path: '/home'
+                name: 'user-profile'
             })
         } else {
             next()
