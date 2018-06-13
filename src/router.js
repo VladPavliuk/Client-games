@@ -2,8 +2,11 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import AuthService from "./plugins/Auth";
 
-import UserProfile from './components/UserProfile';
-import UserLogin from './components/UserLogin';
+import AuthLayout from '@/components/auth/Layout'
+import UserProfile from '@/components/auth/profile/Profile';
+
+import NonAuthLayout from '@/components/non-auth/Layout'
+import UserLogin from '@/components/non-auth/login/Login';
 
 
 Vue.use(AuthService);
@@ -12,16 +15,28 @@ Vue.use(Router);
 const router = new Router({
     routes: [
         {
-            path: '/login',
-            name: 'user-login',
-            component: UserLogin,
-            meta: {requiresGuest: true}
+            path: '/',
+            component: AuthLayout,
+            children: [
+                {
+                    path: '/profile',
+                    name: 'user-profile',
+                    component: UserProfile,
+                    meta: {requiresAuth: true}
+                }
+            ]
         },
         {
-            path: '/profile',
-            name: 'user-profile',
-            component: UserProfile,
-            meta: {requiresAuth: true}
+            path: '/',
+            component: NonAuthLayout,
+            children: [
+                {
+                    path: '/login',
+                    name: 'user-login',
+                    component: UserLogin,
+                    meta: {requiresGuest: true}
+                }
+            ]
         }
     ]
 });

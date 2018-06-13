@@ -2,7 +2,7 @@
     <div>
         <ul class="menu align-center">
             <li>
-                <router-link :to="{ name: 'profile' }">Profile</router-link>
+                <router-link :to="{ name: 'user-profile' }">Profile</router-link>
             </li>
             <li>
                 <router-link to="/">Games</router-link>
