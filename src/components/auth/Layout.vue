@@ -1,7 +1,13 @@
 <template>
     <div>
         <header-layout></header-layout>
-        <router-view/>
+        <div class="grid-container">
+            <div class="grid-x">
+                <div class="cell small-6 small-offset-3">
+                    <router-view/>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 

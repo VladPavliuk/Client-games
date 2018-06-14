@@ -3,7 +3,8 @@
         Profile
         <button type="button"
                 class="button"
-                @click="logout">logout</button>
+                @click="logout">logout
+        </button>
     </div>
 </template>
 
@@ -12,7 +13,7 @@
         methods: {
             logout() {
                 this.$server.user.logout()
-                    .then(_ => this.$router.push({ name: 'user-login' }));
+                    .then(_ => this.$router.push({name: 'user-login'}));
             }
         }
     }

@@ -1,64 +1,58 @@
 <template>
     <div>
-        <div class="grid-container">
-            <div class="grid-x">
-                <div class="cell small-6 small-offset-3">
-                    <div class="medium-12 cell">
-                        <h4 class="text-center">Registration form</h4>
-                    </div>
-                    <div class="medium-12 cell">
-                        <p class="text-center">
-                            Already have an account?
-                            <router-link :to="{ name: 'user-login' }">Click here</router-link>
-                        </p>
-                    </div>
-                    <div class="medium-12 cell">
-                        <label>First name
-                            <input v-validate="'required'"
-                                   v-model="firstName"
-                                   name="firstName"
-                                   type="text">
-                        </label>
-                    </div>
-                    <div class="medium-12 cell">
-                        <label>Last name
-                            <input v-validate="'required'"
-                                   v-model="lastName"
-                                   name="lastName"
-                                   type="text">
-                        </label>
-                    </div>
-                    <div class="medium-12 cell">
-                        <label>phone number
-                            <input v-validate="'required'"
-                                   v-model="phoneNumber"
-                                   name="phoneNumber"
-                                   type="text">
-                        </label>
-                    </div>
-                    <div class="medium-12 cell">
-                        <label>Email
-                            <input v-validate="'required|email'"
-                                   v-model="email"
-                                   name="email"
-                                   type="text">
-                        </label>
-                    </div>
-                    <div class="medium-12 cell">
-                        <label>Password
-                            <input v-validate="'required'"
-                                   v-model="password"
-                                   name="password"
-                                   type="password">
-                        </label>
-                    </div>
-                    <button @click="submit"
-                            type="button"
-                            class="success button float-right">Registration
-                    </button>
-                </div>
-            </div>
+        <div class="medium-12 cell">
+            <h4 class="text-center">Registration form</h4>
         </div>
+        <div class="medium-12 cell">
+            <p class="text-center">
+                Already have an account?
+                <router-link :to="{ name: 'user-login' }">Click here</router-link>
+            </p>
+        </div>
+        <div class="medium-12 cell">
+            <label>First name
+                <input v-validate="'required'"
+                       v-model="firstName"
+                       name="firstName"
+                       type="text">
+            </label>
+        </div>
+        <div class="medium-12 cell">
+            <label>Last name
+                <input v-validate="'required'"
+                       v-model="lastName"
+                       name="lastName"
+                       type="text">
+            </label>
+        </div>
+        <div class="medium-12 cell">
+            <label>phone number
+                <input v-validate="'required'"
+                       v-model="phoneNumber"
+                       name="phoneNumber"
+                       type="text">
+            </label>
+        </div>
+        <div class="medium-12 cell">
+            <label>Email
+                <input v-validate="'required|email'"
+                       v-model="email"
+                       name="email"
+                       type="text">
+            </label>
+        </div>
+        <div class="medium-12 cell">
+            <label>Password
+                <input v-validate="'required'"
+                       v-model="password"
+                       name="password"
+                       type="password">
+            </label>
+        </div>
+        <button @click="submit"
+                type="button"
+                class="success button float-right">Registration
+        </button>
     </div>
 </template>
 
