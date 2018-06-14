@@ -1,8 +1,11 @@
 <template>
     <div>
         <div class="grid-container">
-            <div class="grid-x grid-padding-x">
-                <div class="medium-6 cell">
+            <div class="grid-x">
+                <div class="cell small-6 small-offset-3">
+                    <h4 class="text-center">Login form</h4>
+                </div>
+                <div class="cell small-6 small-offset-3">
                     <label>Email
                         <input v-validate="'required|email'"
                                v-model="email"
@@ -10,7 +13,7 @@
                                type="text">
                     </label>
                 </div>
-                <div class="medium-6 cell">
+                <div class="cell small-6 small-offset-3">
                     <label>Password
                         <input v-validate="'required'"
                                v-model="password"
@@ -19,9 +22,11 @@
                     </label>
                 </div>
             </div>
-            <button @click="submit"
-                    type="button"
-                    class="success button">Submit</button>
+            <div class="cell small-6 small-offset-3">
+                <button @click="submit"
+                        type="button"
+                        class="success button">Login</button>
+            </div>
         </div>
     </div>
 </template>
