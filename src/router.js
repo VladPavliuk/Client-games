@@ -7,6 +7,7 @@ import UserProfile from '@/components/auth/profile/Profile';
 
 import NonAuthLayout from '@/components/non-auth/Layout'
 import UserLogin from '@/components/non-auth/login/Login';
+import UserRegistration from '@/components/non-auth/registration/Registration';
 
 
 Vue.use(AuthService);
@@ -19,7 +20,7 @@ const router = new Router({
             component: AuthLayout,
             children: [
                 {
-                    path: '/profile',
+                    path: 'profile',
                     name: 'user-profile',
                     component: UserProfile,
                     meta: {requiresAuth: true}
@@ -31,7 +32,13 @@ const router = new Router({
             component: NonAuthLayout,
             children: [
                 {
-                    path: '/login',
+                    path: 'registration',
+                    name: 'user-registration',
+                    component: UserRegistration,
+                    meta: {requiresGuest: true}
+                },
+                {
+                    path: 'login',
                     name: 'user-login',
                     component: UserLogin,
                     meta: {requiresGuest: true}

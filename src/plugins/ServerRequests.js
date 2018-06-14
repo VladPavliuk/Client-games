@@ -2,6 +2,13 @@ export default {
     install(Vue, options) {
         Vue.server = Vue.prototype.$server = {
             user: {
+                registration(data) {
+                    return Vue.serverEngine.request({
+                        method: 'post',
+                        body: data,
+                        uri: Vue.serverRoutes.user.registration()
+                    });
+                },
                 login(data) {
                     return Vue.serverEngine.request({
                         method: 'post',
