@@ -3,29 +3,40 @@
         <div class="grid-container">
             <div class="grid-x">
                 <div class="cell small-6 small-offset-3">
-                    <h4 class="text-center">Login form</h4>
+                    <div class="medium-12 cell">
+                        <h4 class="text-center">Login form</h4>
+                    </div>
+                    <div class="medium-12 cell">
+                        <p class="text-center">
+                            Don't have an account?
+                            <router-link :to="{ name: 'user-registration' }">Click here</router-link>
+                        </p>
+                    </div>
+                    <div class="medium-12 cell">
+                        <label>Email
+                            <input v-validate="'required|email'"
+                                   v-model="email"
+                                   name="email"
+                                   type="text">
+                        </label>
+                    </div>
+
+                    <div class="medium-12 cell">
+                        <label>Password
+                            <input v-validate="'required'"
+                                   v-model="password"
+                                   name="password"
+                                   type="password">
+                        </label>
+                    </div>
+
+                    <div class="medium-12 cell">
+                        <button @click="submit"
+                                type="button"
+                                class="success float-right button">Login
+                        </button>
+                    </div>
                 </div>
-                <div class="cell small-6 small-offset-3">
-                    <label>Email
-                        <input v-validate="'required|email'"
-                               v-model="email"
-                               name="email"
-                               type="text">
-                    </label>
-                </div>
-                <div class="cell small-6 small-offset-3">
-                    <label>Password
-                        <input v-validate="'required'"
-                               v-model="password"
-                               name="password"
-                               type="password">
-                    </label>
-                </div>
-            </div>
-            <div class="cell small-6 small-offset-3">
-                <button @click="submit"
-                        type="button"
-                        class="success button">Login</button>
             </div>
         </div>
     </div>
@@ -44,7 +55,7 @@
                 this.$server.user.login({
                     email: this.email,
                     password: this.password
-                }).then(_ => this.$router.push({ name: 'user-profile' }));
+                }).then(_ => this.$router.push({name: 'user-profile'}));
             }
         }
     }

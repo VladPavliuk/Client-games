@@ -3,9 +3,15 @@
         <div class="grid-container">
             <div class="grid-x">
                 <div class="cell small-6 small-offset-3">
-                    <h4 class="text-center">Registration form</h4>
-                </div>
-                <div class="cell small-6 small-offset-3">
+                    <div class="medium-12 cell">
+                        <h4 class="text-center">Registration form</h4>
+                    </div>
+                    <div class="medium-12 cell">
+                        <p class="text-center">
+                            Already have an account?
+                            <router-link :to="{ name: 'user-login' }">Click here</router-link>
+                        </p>
+                    </div>
                     <div class="medium-12 cell">
                         <label>First name
                             <input v-validate="'required'"
@@ -48,7 +54,8 @@
                     </div>
                     <button @click="submit"
                             type="button"
-                            class="success button">Registration</button>
+                            class="success button float-right">Registration
+                    </button>
                 </div>
             </div>
         </div>
@@ -59,14 +66,24 @@
     export default {
         data() {
             return {
-                firstName: 'sfasd',
-                lastName: 'sfasd',
+                firstName: this.getRandom(),
+                lastName: this.getRandom(),
                 phoneNumber: '123123',
-                email: 'asd@gmail.com',
+                email: this.getRandom() + '@gmail.com',
                 password: '123123'
             }
         },
         methods: {
+            getRandom(length = 7) {
+                let i, alphabet = 'qwertyuiopasdfghjklzxcvbnm',
+                    output = [];
+
+                for (i = 0; i < length; i++) {
+                    output[i] = alphabet[Math.floor(Math.random() * alphabet.length)];
+                }
+
+                return output.join('');
+            },
             submit() {
                 this.$server.user.registration({
                     firstName: this.firstName,
@@ -74,7 +91,7 @@
                     phoneNumber: this.phoneNumber,
                     email: this.email,
                     password: this.password
-                }).then(_ => this.$router.push({ name: 'user-login' }));
+                }).then(_ => this.$router.push({name: 'user-login'}));
             }
         }
     }
