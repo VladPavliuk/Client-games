@@ -11,6 +11,23 @@ export default {
                 logout() {
                     return 'api/auth/logout';
                 }
+            },
+            games: {
+                store() {
+                    return 'api/games'
+                },
+                index() {
+                    return 'api/games'
+                },
+                show() {
+                    return 'api/games'
+                },
+                update() {
+                    return 'api/games'
+                },
+                destroy() {
+                    return 'api/games'
+                }
             }
         }
     }

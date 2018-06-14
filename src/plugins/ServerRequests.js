@@ -23,6 +23,27 @@ export default {
                         uri: Vue.serverRoutes.user.logout()
                     }).then(_ => Vue.auth.destroyToken())
                 },
+            },
+            games: {
+                store() {
+                    return 'api/games'
+                },
+                index() {
+                    return Vue.serverEngine.request({
+                        auth: true,
+                        store: 'games',
+                        uri: Vue.serverRoutes.games.index()
+                    });
+                },
+                show() {
+                    return 'api/games'
+                },
+                update() {
+                    return 'api/games'
+                },
+                destroy() {
+                    return 'api/games'
+                }
             }
         }
     }

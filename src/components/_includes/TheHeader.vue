@@ -5,7 +5,7 @@
                 <router-link :to="{ name: 'user-profile' }">Profile</router-link>
             </li>
             <li>
-                <router-link to="/">Games</router-link>
+                <router-link :to="{ name: 'games-list' }">Games</router-link>
             </li>
             <li>
                 <router-link to="/">Highest scores</router-link>

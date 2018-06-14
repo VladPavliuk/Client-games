@@ -4,6 +4,7 @@ import AuthService from "./plugins/Auth";
 
 import AuthLayout from '@/components/auth/Layout'
 import UserProfile from '@/components/auth/profile/Profile';
+import GamesList from '@/components/auth/GamesList';
 
 import NonAuthLayout from '@/components/non-auth/Layout'
 import UserLogin from '@/components/non-auth/login/Login';
@@ -23,6 +24,12 @@ const router = new Router({
                     path: 'profile',
                     name: 'user-profile',
                     component: UserProfile,
+                    meta: {requiresAuth: true}
+                },
+                {
+                    path: 'games',
+                    name: 'games-list',
+                    component: GamesList,
                     meta: {requiresAuth: true}
                 }
             ]

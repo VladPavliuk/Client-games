@@ -70,7 +70,7 @@ export default {
 
             handleSuccessResponse(params, response) {
                 if (params.hasOwnProperty('store'))
-                    Vue.storage.set(params.store, response.body.data);
+                    Vue.storage.set(params.store, response.body);
 
                 if (params.hasOwnProperty('message') && params.message)
                     Vue.flashMessage.show(params.message === true ? response.data.message : params.message, 2);
