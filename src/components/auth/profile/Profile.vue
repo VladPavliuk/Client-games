@@ -18,7 +18,19 @@
 </template>
 
 <script>
+    import io from 'socket.io-client';
+
     export default {
+        data() {
+            return {
+                socket : io('https://games-sockets-server.herokuapp.com')
+            }
+        },
+        mounted() {
+            this.socket.on('new message', (data) => {
+                console.log(data);
+            });
+        },
         methods: {
             logout() {
                 this.$server.user.logout()

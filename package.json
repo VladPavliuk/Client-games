@@ -10,6 +10,7 @@
     "test:e2e": "vue-cli-service test:e2e"
   },
   "dependencies": {
+    "socket.io-client": "^2.1.1",
     "vee-validate": "^2.1.0-beta.1",
     "vue": "^2.5.16",
     "vue-jwt-decode": "^0.1.0",
