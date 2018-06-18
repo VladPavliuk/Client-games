@@ -6,7 +6,7 @@ import vueResource from 'vue-resource'
 import VeeValidate from 'vee-validate'
 import VueJwtDecode from 'vue-jwt-decode'
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 //> Import custom services.
 import FlashMessageService from './plugins/FlashMessage'
@@ -21,7 +21,7 @@ import GameService from './plugins/Game'
 
 Vue.use(vueResource);
 Vue.use(VeeValidate);
-Vue.use(VueJwtDecode)
+Vue.use(VueJwtDecode);
 
 //> Use custom service.
 Vue.use(FlashMessageService);
@@ -34,8 +34,8 @@ Vue.use(ServerRequests);
 Vue.use(GameService);
 //<
 
-Vue.http.options.root = 'https://localhost:44390';
-
+Vue.http.options.root = process.env.LUCROR_GAMES_APP_SERVER_URL;
+console.log(process.env);
 export default new Vue({
   router,
   store,
