@@ -24,6 +24,7 @@
 </script>
 
 <style lang="scss">
+    // TODO: add ability to dynamically define height of iframe
     .game-iframe {
         width: 100%;
     }
