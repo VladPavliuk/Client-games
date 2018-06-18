@@ -34,7 +34,8 @@ Vue.use(ServerRequests);
 Vue.use(GameService);
 //<
 
-Vue.http.options.root = process.env.LUCROR_GAMES_APP_SERVER_URL;
+Vue.http.options.root = '/';
+console.log(process.env.TEST);
 console.log(process.env);
 export default new Vue({
   router,
