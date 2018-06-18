@@ -6,10 +6,12 @@ import AuthLayout from '@/components/auth/Layout'
 import UserProfile from '@/components/auth/profile/Profile';
 import GamesList from '@/components/auth/GamesList';
 
+import GameLayout from '@/components/auth/GameLayout';
+import GameView from '@/components/auth/GameView';
+
 import NonAuthLayout from '@/components/non-auth/Layout'
 import UserLogin from '@/components/non-auth/login/Login';
 import UserRegistration from '@/components/non-auth/registration/Registration';
-
 
 Vue.use(AuthService);
 Vue.use(Router);
@@ -51,6 +53,11 @@ const router = new Router({
                     meta: {requiresGuest: true}
                 }
             ]
+        },
+        {
+            path: '/game',
+            component: GameLayout,
+            name: 'game-view'
         }
     ]
 });

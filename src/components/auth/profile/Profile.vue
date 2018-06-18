@@ -6,6 +6,11 @@
                     <img src= "assets/img/media-object/avatar-1.jpg">
                 </div>
             </div>
+
+            <!--<iframe src="https://ping-pong-js-game.herokuapp.com"-->
+                    <!--style="width: 100%; height: 800px;"-->
+                    <!--frameborder="1"></iframe>-->
+            
             <div class="media-object-section main-section">
                 Profile
                 <button type="button"
