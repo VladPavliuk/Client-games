@@ -10,7 +10,7 @@
     export default {
         data() {
             return {
-                socket: io('https://games-sockets-server.herokuapp.com')
+                socket: io(process.env.VUE_APP_LUCROR_GAMES_SOCKETS_SERVER_URL)
             }
         },
         mounted() {
