@@ -55,9 +55,9 @@ const router = new Router({
             ]
         },
         {
-            path: '/game',
+            path: '/play-game/:id',
             component: GameLayout,
-            name: 'game-view'
+            name: 'play-game'
         }
     ]
 });

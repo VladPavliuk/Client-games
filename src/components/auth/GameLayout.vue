@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <game-view game-url="https://ping-pong-js-game.herokuapp.com"></game-view>
+    <div v-if="game">
+        <game-view :game-url="game.url"></game-view>
     </div>
 </template>
 
@@ -13,6 +13,19 @@
         components: {
             HeaderLayout,
             GameView
+        },
+        data() {
+            return {
+                gameId: this.$route.params.id
+            }
+        },
+        computed: {
+            game() {
+                return this.$store.state.game;
+            }
+        },
+        mounted() {
+            this.$server.games.show(this.gameId);
         }
     }
 </script>

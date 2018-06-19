@@ -19,14 +19,14 @@ export default {
                 index() {
                     return 'api/games'
                 },
-                show() {
-                    return 'api/games'
+                show(id) {
+                    return 'api/games/' + id
                 },
-                update() {
-                    return 'api/games'
+                update(id) {
+                    return 'api/games/' + id
                 },
-                destroy() {
-                    return 'api/games'
+                destroy(id) {
+                    return 'api/games/' + id
                 }
             }
         }

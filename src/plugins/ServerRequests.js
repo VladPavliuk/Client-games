@@ -35,8 +35,12 @@ export default {
                         uri: Vue.serverRoutes.games.index()
                     });
                 },
-                show() {
-                    return 'api/games'
+                show(id) {
+                    return Vue.serverEngine.request({
+                        auth: true,
+                        store: 'game',
+                        uri: Vue.serverRoutes.games.show(id)
+                    });
                 },
                 update() {
                     return 'api/games'
