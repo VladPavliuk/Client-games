@@ -1,17 +1,22 @@
 <template>
-    <div v-if="game">
-        <game-view :game-url="game.url"></game-view>
+    <div>
+        <div>
+            <games-header></games-header>
+        </div>
+        <div v-if="game">
+            <!--<game-view :game-url="game.url"></game-view>-->
+        </div>
     </div>
 </template>
 
 
 <script>
-    import HeaderLayout from '@/components/_includes/TheHeader'
-    import GameView from '@/components/auth/GameView'
+    import GamesHeader from '@/components/auth/games/_includes/TheGamesHeader'
+    import GameView from '@/components/auth/games/GameView'
 
     export default {
         components: {
-            HeaderLayout,
+            GamesHeader,
             GameView
         },
         data() {
