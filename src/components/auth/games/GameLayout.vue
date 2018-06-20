@@ -4,7 +4,7 @@
             <games-header></games-header>
         </div>
         <div v-if="game">
-            <!--<game-view :game-url="game.url"></game-view>-->
+            <game-view :game-url="game.url"></game-view>
         </div>
     </div>
 </template>

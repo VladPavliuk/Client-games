@@ -1,6 +1,7 @@
 <template>
     <div>
         <iframe :src="gameUrl"
+                ref="game-iframe"
                 class="game-iframe"
                 :style="{ height: gameHeight + 'px'}"
                 frameborder="0"></iframe>
@@ -18,8 +19,18 @@
                 type: Number,
                 default: 800
             }
+        },
+        mounted() {
+           this.addAutoFocusToIframe();
+        },
+        methods: {
+            addAutoFocusToIframe() {
+                let vueInstance = this;
+                this.$refs['game-iframe'].contentWindow.top.onload = function() {
+                    vueInstance.$refs['game-iframe'].contentWindow.focus();
+                };
+            }
         }
-
     }
 </script>
 
