@@ -19,6 +19,9 @@ export default {
                 index() {
                     return 'api/games'
                 },
+                play(id) {
+                    return 'api/games/play/' + id
+                },
                 show(id) {
                     return 'api/games/' + id
                 },

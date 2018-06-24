@@ -26,11 +26,11 @@
         },
         computed: {
             game() {
-                return this.$store.state.game;
+                return this.$store.state.game['game'];
             }
         },
         mounted() {
-            this.$server.games.show(this.gameId);
+            this.$server.games.play(this.gameId);
         }
     }
 </script>

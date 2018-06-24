@@ -14,6 +14,7 @@
             }
         },
         mounted() {
+            this.socket.emit('subscribe', 69);
             this.socket.on('new message', (data) => {
                 console.log(data);
             });
