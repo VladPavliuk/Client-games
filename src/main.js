@@ -5,6 +5,9 @@ import store from './store'
 import vueResource from 'vue-resource'
 import VeeValidate from 'vee-validate'
 import VueJwtDecode from 'vue-jwt-decode'
+import VueMaterial from 'vue-material'
+import 'vue-material/dist/vue-material.min.css'
+import 'vue-material/dist/theme/default.css' // Vue material theme
 
 Vue.config.productionTip = false;
 
@@ -22,6 +25,7 @@ import GameService from './plugins/Game'
 Vue.use(vueResource);
 Vue.use(VeeValidate);
 Vue.use(VueJwtDecode);
+Vue.use(VueMaterial)
 
 //> Use custom service.
 Vue.use(FlashMessageService);

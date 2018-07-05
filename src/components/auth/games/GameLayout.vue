@@ -4,7 +4,7 @@
             <games-header></games-header>
         </div>
         <div v-if="game">
-            <game-view :game-url="game.url"></game-view>
+            <game-view :game-url="url"></game-view>
         </div>
     </div>
 </template>
@@ -13,6 +13,7 @@
 <script>
     import GamesHeader from '@/components/auth/games/_includes/TheGamesHeader'
     import GameView from '@/components/auth/games/GameView'
+    import io from 'socket.io-client';
 
     export default {
         components: {
@@ -21,16 +22,31 @@
         },
         data() {
             return {
+                socket: io(process.env.VUE_APP_LUCROR_GAMES_SOCKETS_SERVER_URL),
                 gameId: this.$route.params.id
             }
         },
         computed: {
+            token() {
+                return this.$store.state.game['token'];
+            },
             game() {
                 return this.$store.state.game['game'];
+            },
+            url() {
+                return this.game ? this.game.url + '?token=' + this.token : '';
             }
         },
         mounted() {
-            this.$server.games.play(this.gameId);
+            this.$server.games.play(this.gameId)
+                .then(res => {
+                    this.socket.emit('subscribe', this.token);
+                    this.socket.on('new message', data => {
+                        this.$router.push({name: 'games-list'});
+                        console.log(data);
+                        this.$flashMessage.show({ message: 'sdasd', status });
+                    });
+                });
         }
     }
 </script>

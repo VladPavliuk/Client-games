@@ -4,24 +4,6 @@
     </div>
 </template>
 
-<script>
-    import io from 'socket.io-client';
-
-    export default {
-        data() {
-            return {
-                socket: io(process.env.VUE_APP_LUCROR_GAMES_SOCKETS_SERVER_URL)
-            }
-        },
-        mounted() {
-            this.socket.emit('subscribe', 69);
-            this.socket.on('new message', (data) => {
-                console.log(data);
-            });
-        },
-    }
-</script>
-
 <!--<style lang="scss">-->
 <!--#app {-->
 <!--font-family: 'Avenir', Helvetica, Arial, sans-serif;-->
