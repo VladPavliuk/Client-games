@@ -9,6 +9,17 @@ export default {
                         uri: Vue.serverRoutes.user.registration()
                     });
                 },
+                uploadAvatar(data) {
+                    return Vue.serverEngine.request({
+                        method: 'post',
+                        body: data,
+                        auth: true,
+                        headers: {
+                            'Content-Type': 'multipart/form-data'
+                        },
+                        uri: Vue.serverRoutes.user.uploadAvatar()
+                    });
+                },
                 login(data) {
                     return Vue.serverEngine.request({
                         method: 'post',

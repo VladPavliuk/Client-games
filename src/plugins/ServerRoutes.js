@@ -5,6 +5,9 @@ export default {
                 registration() {
                     return 'api/account';
                 },
+                uploadAvatar() {
+                    return 'api/account/upload-image'
+                },
                 login() {
                     return 'api/auth/login';
                 },

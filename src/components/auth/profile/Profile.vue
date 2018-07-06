@@ -8,7 +8,10 @@
                 </md-card-header-text>
 
                 <md-card-media>
-                    <img src="/assets/examples/avatar-2.jpg" alt="People">
+                    <img :src="serverURL + '/images/users/'" alt="People">
+                    <input type="file"
+                           ref="avatar-file-input"
+                           @input="onAvatarInput">
                 </md-card-media>
             </md-card-header>
             <md-card-content>
@@ -19,35 +22,41 @@
                 <md-button @click="logout" class="md-raised md-accent">Logout</md-button>
             </md-card-actions>
         </md-card>
-
-        <!--<div class="media-object">-->
-            <!--<div class="media-object-section">-->
-                <!--<div class="thumbnail">-->
-                    <!--<img src= "assets/img/media-object/avatar-1.jpg">-->
-                <!--</div>-->
-            <!--</div>-->
-
-            <!--&lt;!&ndash;<iframe src="https://ping-pong-js-game.herokuapp.com"&ndash;&gt;-->
-                    <!--&lt;!&ndash;style="width: 100%; height: 800px;"&ndash;&gt;-->
-                    <!--&lt;!&ndash;frameborder="1"></iframe>&ndash;&gt;-->
-            <!---->
-            <!--<div class="media-object-section main-section">-->
-                <!--Profile-->
-                <!--<button type="button"-->
-                        <!--class="button"-->
-                       <!--&gt;logout-->
-                <!--</button>-->
-            <!--</div>-->
-        <!--</div>-->
     </div>
 </template>
 
 <script>
     export default {
+        data() {
+            return {
+                serverURL: process.env.VUE_APP_LUCROR_GAMES_APP_SERVER_URL
+            }
+        },
         methods: {
+            onAvatarInput(event) {
+                let file = event.target.files[0];
+                let formData = new FormData();
+                formData.set('image', file);
+
+                this.$server.user.uploadAvatar(formData);
+
+                this.getBase64(file, fileBase64 => {
+                    let formData = new FormData();
+                    formData.set('image', fileBase64);
+                    this.$server.user.uploadAvatar({image: fileBase64})
+                });
+            },
             logout() {
                 this.$server.user.logout()
                     .then(_ => this.$router.push({name: 'user-login'}));
+            },
+
+            getBase64(file, callback) {
+                let reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = function () {
+                    callback(reader.result);
+                };
             }
         }
     }
