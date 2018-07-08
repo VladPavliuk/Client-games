@@ -11,7 +11,10 @@
                     <template v-for="(game, index) in games">
                         <md-list-item :key="game.id">
                             <md-avatar>
-                                <img src="https://placeimg.com/40/40/people/1" alt="People">
+                                <img v-if="game.iconUrl"
+                                     :src="game.iconUrl"
+                                     :alt="game.title">
+                                <md-icon class="md-size-2x" v-else>gamepad</md-icon>
                             </md-avatar>
 
                             <div class="md-list-item-text">
@@ -47,29 +50,6 @@
 
             </md-card-actions>
         </md-card>
-
-
-
-        <!--<md-list v-if="games.length > 0">-->
-            <!--<md-list-item v-for="game in games"-->
-                          <!--:key="game.id">-->
-                <!--<span class="md-list-item-text">{{ game.title }}</span>-->
-                <!--<router-link :to="{ name: 'play-game', params: { id: game.id } }">Play</router-link>-->
-            <!--</md-list-item>-->
-        <!--</md-list>-->
-        <!--<md-list v-else>-->
-            <!--<md-list-item>-->
-                <!--<span class="md-list-item-text">No games</span>-->
-            <!--</md-list-item>-->
-        <!--</md-list>-->
-
-        <!--<ul v-if="games.length > 0">-->
-            <!--<li v-for="game in games"-->
-                <!--:key="game.id">-->
-                <!--{{ game.title }} - -->
-                <!--<router-link :to="{ name: 'play-game', params: { id: game.id } }">Play</router-link>-->
-            <!--</li>-->
-        <!--</ul>-->
     </div>
 </template>
 
