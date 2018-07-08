@@ -1,8 +1,19 @@
 <template>
     <div id="app">
         <router-view/>
+        <flash-message></flash-message>
     </div>
 </template>
+
+<script>
+    import FlashMessage from '@/components/_includes/FlashMessage'
+
+    export default {
+        components: {
+            FlashMessage
+        }
+    }
+</script>
 
 <!--<style lang="scss">-->
 <!--#app {-->

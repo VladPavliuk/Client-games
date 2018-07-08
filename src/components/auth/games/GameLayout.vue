@@ -39,12 +39,11 @@
         },
         mounted() {
             this.$server.games.play(this.gameId)
-                .then(res => {
+                .then(() => {
                     this.socket.emit('subscribe', this.token);
                     this.socket.on('new message', data => {
                         this.$router.push({name: 'games-list'});
-                        console.log(data);
-                        this.$flashMessage.show({ message: 'sdasd', status });
+                        this.$flashMessage.show('Your score in `' + this.game.title + '` is ' + data.score);
                     });
                 });
         }
