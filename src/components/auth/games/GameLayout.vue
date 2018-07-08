@@ -42,8 +42,11 @@
                 .then(() => {
                     this.socket.emit('subscribe', this.token);
                     this.socket.on('new message', data => {
-                        this.$router.push({name: 'games-list'});
-                        this.$flashMessage.show('Your score in `' + this.game.title + '` is ' + data.score);
+                        this.$server.games.closeSession(data.room, data.score)
+                            .then(() => {
+                                this.$router.push({name: 'games-list'});
+                                this.$flashMessage.show('Your score in `' + this.game.title + '` is ' + data.score);
+                            });
                     });
                 });
         }

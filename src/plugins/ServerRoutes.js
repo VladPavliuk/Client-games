@@ -11,6 +11,7 @@ export default {
                 store: () => 'api/games',
                 index: () => 'api/games',
                 openSession: (id) => `api/games/${id}/open-session`,
+                closeSession: (token, score) => `api/games/close-session/${token}/${score}`,
                 show: (id) => `api/games/${id}`,
                 update: (id) => `api/games/${id}`,
                 destroy: (id) => `api/games/${id}`

@@ -48,9 +48,17 @@ export default {
                 },
                 openSession(id) {
                     return Vue.serverEngine.request({
+                        method: 'post',
                         auth: true,
                         store: 'game',
                         uri: Vue.serverRoutes.games.openSession(id)
+                    });
+                },
+                closeSession(token, score) {
+                    return Vue.serverEngine.request({
+                        method: 'post',
+                        auth: true,
+                        uri: Vue.serverRoutes.games.closeSession(token, score)
                     });
                 },
                 show(id) {
