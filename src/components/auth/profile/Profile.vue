@@ -8,7 +8,7 @@
                 </md-card-header-text>
 
                 <md-card-media>
-                    <img :src="serverURL + '/images/users/'" alt="People">
+                    <img :src="serverURL + '/'" alt="People">
                     <input type="file"
                            ref="avatar-file-input"
                            @input="onAvatarInput">
@@ -39,24 +39,10 @@
                 formData.set('image', file);
 
                 this.$server.user.uploadAvatar(formData);
-
-                this.getBase64(file, fileBase64 => {
-                    let formData = new FormData();
-                    formData.set('image', fileBase64);
-                    this.$server.user.uploadAvatar({image: fileBase64})
-                });
             },
             logout() {
                 this.$server.user.logout()
-                    .then(_ => this.$router.push({name: 'user-login'}));
-            },
-
-            getBase64(file, callback) {
-                let reader = new FileReader();
-                reader.readAsDataURL(file);
-                reader.onload = function () {
-                    callback(reader.result);
-                };
+                    .then(() => this.$router.push({name: 'user-login'}));
             }
         }
     }
