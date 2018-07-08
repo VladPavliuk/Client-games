@@ -10,7 +10,7 @@ export default {
             games: {
                 store: () => 'api/games',
                 index: () => 'api/games',
-                play: (id) => `api/games/play/${id}`,
+                openSession: (id) => `api/games/${id}/open-session`,
                 show: (id) => `api/games/${id}`,
                 update: (id) => `api/games/${id}`,
                 destroy: (id) => `api/games/${id}`

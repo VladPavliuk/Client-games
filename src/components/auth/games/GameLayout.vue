@@ -38,7 +38,7 @@
             }
         },
         mounted() {
-            this.$server.games.play(this.gameId)
+            this.$server.games.openSession(this.gameId)
                 .then(() => {
                     this.socket.emit('subscribe', this.token);
                     this.socket.on('new message', data => {

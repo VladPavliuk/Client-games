@@ -1,7 +1,5 @@
 <template>
     <div>
-        <md-button type="submit" @click="openSnackbar" class="md-primary md-raised">Open Snackbar</md-button>
-
         <md-snackbar :md-position="position"
                      :md-duration="isInfinity ? Infinity : duration"
                      :md-active.sync="showSnackbar"

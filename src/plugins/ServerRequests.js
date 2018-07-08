@@ -46,11 +46,11 @@ export default {
                         uri: Vue.serverRoutes.games.index()
                     });
                 },
-                play(id) {
+                openSession(id) {
                     return Vue.serverEngine.request({
                         auth: true,
                         store: 'game',
-                        uri: Vue.serverRoutes.games.play(id)
+                        uri: Vue.serverRoutes.games.openSession(id)
                     });
                 },
                 show(id) {
