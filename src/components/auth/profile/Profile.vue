@@ -29,7 +29,7 @@
     export default {
         data() {
             return {
-                serverURL: process.env.VUE_APP_LUCROR_GAMES_APP_SERVER_URL
+                serverURL: this.$http.options.root
             }
         },
         methods: {
