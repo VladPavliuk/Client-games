@@ -1,39 +1,19 @@
 export default {
-    install(Vue, options) {
+    install(Vue) {
         Vue.serverRoutes = Vue.prototype.$serverRoutes = {
             user: {
-                registration() {
-                    return 'api/account';
-                },
-                uploadAvatar() {
-                    return 'api/account/upload-image'
-                },
-                login() {
-                    return 'api/auth/login';
-                },
-                logout() {
-                    return 'api/auth/logout';
-                }
+                registration: () => 'api/account',
+                uploadAvatar: () => 'api/account/upload-image',
+                login: () => 'api/auth/login',
+                logout: () => 'api/auth/logout'
             },
             games: {
-                store() {
-                    return 'api/games'
-                },
-                index() {
-                    return 'api/games'
-                },
-                play(id) {
-                    return 'api/games/play/' + id
-                },
-                show(id) {
-                    return 'api/games/' + id
-                },
-                update(id) {
-                    return 'api/games/' + id
-                },
-                destroy(id) {
-                    return 'api/games/' + id
-                }
+                store: () => 'api/games',
+                index: () => 'api/games',
+                play: (id) => `api/games/play/${id}`,
+                show: (id) => `api/games/${id}`,
+                update: (id) => `api/games/${id}`,
+                destroy: (id) => `api/games/${id}`
             }
         }
     }
