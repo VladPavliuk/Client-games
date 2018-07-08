@@ -1,6 +1,5 @@
 <template>
     <div>
-
         <md-card>
             <md-card-header>
                 <div class="md-title">Games</div>
@@ -23,7 +22,7 @@
                             </div>
 
                             <md-button :to="{ name: 'play-game', params: { id: game.id } }"
-                                       class="md-icon-button md-list-action md-fab md-fab-bottom-right">
+                                       class="play-button md-icon-button md-list-action md-fab md-fab-bottom-right">
                                 <md-icon class="md-size-2x">play_circle_filled</md-icon>
                             </md-button>
                         </md-list-item>
@@ -65,3 +64,10 @@
         }
     }
 </script>
+
+<style>
+    .play-button {
+        position: relative !important;
+        bottom: -12px !important;
+    }
+</style>
