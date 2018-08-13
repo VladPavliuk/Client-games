@@ -1,8 +1,8 @@
 <template>
     <div>
-        <div>
-            <games-header></games-header>
-        </div>
+        <!--<div>-->
+            <!--<games-header></games-header>-->
+        <!--</div>-->
         <div v-if="game">
             <game-view :game-url="url"></game-view>
         </div>
@@ -13,7 +13,7 @@
 <script>
     import GamesHeader from '@/components/auth/games/_includes/TheGamesHeader'
     import GameView from '@/components/auth/games/GameView'
-    import io from 'socket.io-client';
+    import {HubConnectionBuilder} from '@aspnet/signalr';
 
     export default {
         components: {
@@ -22,7 +22,9 @@
         },
         data() {
             return {
-                socket: io(process.env.VUE_APP_LUCROR_GAMES_SOCKETS_SERVER_URL),
+                connection: new HubConnectionBuilder()
+                    .withUrl(process.env.VUE_APP_LUCROR_GAMES_SOCKETS_SERVER_URL + "/chatHub")
+                    .build(),
                 gameId: this.$route.params.id
             }
         },
@@ -40,13 +42,14 @@
         mounted() {
             this.$server.games.openSession(this.gameId)
                 .then(() => {
-                    this.socket.emit('subscribe', this.token);
-                    this.socket.on('new message', data => {
-                        this.$server.games.closeSession(data.room, data.score)
-                            .then(() => {
-                                this.$router.push({name: 'games-list'});
-                                this.$flashMessage.show('Your score in `' + this.game.title + '` is ' + data.score);
-                            });
+                    this.connection
+                        .start()
+                        .then(() => this.connection.invoke("joinRoom", this.token))
+                        .catch(err => console.error(err));
+
+                    this.connection.on("CloseSession", (data) => {
+                        this.$server.games.closeSession(data.room, data.score);
+                        this.$router.back();
                     });
                 });
         }

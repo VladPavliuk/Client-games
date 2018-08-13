@@ -17,7 +17,7 @@
                             </md-avatar>
 
                             <div class="md-list-item-text">
-                                <span class="md-title">{{ game.title }}</span>
+                                <span class="md-title">{{ game.title }} <small>highest score - {{ game.score }}</small></span>
                                 <p v-show="game.description" class="md-caption">{{ game.description }}</p>
                             </div>
 
